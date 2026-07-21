@@ -51,6 +51,9 @@ export class Gameboard {
     const [x, y] = coords;
     return this.#board[x][y];
   }
+  getBoard() {
+    return this.#board;
+  }
 }
 
 export class Player {
@@ -64,5 +67,8 @@ export class Player {
       new Ship(4),
       new Ship(5),
     ];
+  }
+  sinkHandler() {
+    this.liveShips.filter((i) => i.sunk === false);
   }
 }

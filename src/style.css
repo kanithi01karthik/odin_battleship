@@ -1,0 +1,56 @@
+.cell {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+}
+.board {
+  display: grid;
+  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+  width: 400px;
+  height: 400px;
+}
+.board:nth-child(1),
+.board:nth-child(10),
+.board:nth-child(90),
+.board:nth-child(100) {
+  border-radius: 10%;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#play {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.water {
+  background-color: lightseagreen;
+}
+.hit {
+  background-color: red;
+}
+.miss {
+  background-color: lightgray;
+}
+#rightships {
+  display: grid;
+  grid-template: repeat(10, 1fr) / repeat(2, 1fr);
+  width: 80px;
+  height: 400px;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1000;
+  background-color: cornsilk;
+}
