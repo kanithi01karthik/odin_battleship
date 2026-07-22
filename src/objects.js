@@ -1,8 +1,10 @@
 export class Ship {
-  constructor(length) {
+  constructor(length, coord = [0, 0]) {
     this.length = length;
     this.hits = 0;
     this.sunk = false;
+    this.coord = coord;
+    this.orientation = "S";
   }
   isSunk = () => (this.hits === this.length ? (this.sunk = true) : null);
   hit = () => {
@@ -20,11 +22,12 @@ export class Gameboard {
   constructor() {
     this.shipLocation = null;
     this.gameOver = false;
+    this.placing = true;
     this.#board = Array.from({ length: 10 }, () =>
       Array.from({ length: 10 }, () => "W"),
     );
   }
-  place(ship, orientation, [x, y]) {
+  place(ship, orientation = ship.orientation, [x, y] = ship.coord) {
     const dx = orientation === "E" ? 1 : 0;
     const dy = orientation === "S" ? 1 : 0;
     for (let i = 0; i < ship.length; i++) {
@@ -61,11 +64,11 @@ export class Player {
     this.gameBoard = new Gameboard();
     this.name = name;
     this.liveShips = [
-      new Ship(2),
-      new Ship(3),
-      new Ship(3),
-      new Ship(4),
-      new Ship(5),
+      new Ship(2, [10, 0]),
+      new Ship(3, [10, 3]),
+      new Ship(3, [10, 7]),
+      new Ship(4, [11, 0]),
+      new Ship(5, [11, 5]),
     ];
   }
   sinkHandler() {

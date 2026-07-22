@@ -54,3 +54,6 @@ body {
   z-index: 1000;
   background-color: cornsilk;
 }
+.selected {
+  border: 2px solid red;
+}
